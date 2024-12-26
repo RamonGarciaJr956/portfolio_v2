@@ -46,7 +46,7 @@ const projects = [
     title: "Portfolio Website",
     description: "A personal portfolio website built with Next.js to showcase and share my work. This project served as a learning experience to explore Next.js while building upon existing React.js knowledge.",
     techStack: ["Tailwind", "Node.js", "Next.js"],
-    github: "#",
+    github: "https://github.com/RamonGarciaJr956/portfolio_v2",
     live: null,
     image: "/portfolio.png"
   },
