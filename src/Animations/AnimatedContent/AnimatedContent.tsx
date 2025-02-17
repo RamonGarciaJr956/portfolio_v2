@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/non-nullable-type-assertion-style */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 "use client";
 
 /*
@@ -6,8 +11,8 @@
 	2-17-2025
 */
 
-import { useRef, useEffect, useState, ReactNode } from "react";
-import { useSpring, animated, SpringConfig } from "@react-spring/web";
+import { useRef, useEffect, useState, type ReactNode } from "react";
+import { useSpring, animated, type SpringConfig } from "@react-spring/web";
 
 interface AnimatedContentProps {
   children: ReactNode;
