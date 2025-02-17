@@ -3,6 +3,9 @@ import { Github, ExternalLink, ChevronsDown, Quote, Linkedin } from 'lucide-reac
 import Navbar from './_components/Navbar';
 import Image from 'next/image';
 import Link from 'next/link';
+import DecryptedText from '~/TextAnimations/DecryptedText/DecryptedText';
+import AnimatedContent from '~/Animations/AnimatedContent/AnimatedContent';
+import LetterGlitch from '~/Backgrounds/LetterGlitch/LetterGlitch';
 
 const certifications = [
   {
@@ -75,14 +78,42 @@ export default function HomePage() {
       <section className="flex flex-col items-center justify-center min-h-svh h-full">
         <Navbar />
 
-        <div className="flex flex-col items-center justify-center h-full gap-3 font-GeneralSans">
+        <div className='absolute inset-0 z-0'>
+          <LetterGlitch
+            glitchSpeed={50}
+            centerVignette={true}
+            outerVignette={true}
+            smooth={true}
+            glitchColors={["#2b4539", "#61dca3", "#61b3dc"]}
+          />
+        </div>
+
+        <div className="flex flex-col items-center justify-center h-full gap-3 font-GeneralSans z-10">
           <Image src="/me.png" alt="Hero" width={250} height={250} />
-          <p className="text-neutral-500 text-xl">Hi, I&apos;m Ramon 👋</p>
-          <p className="lg:w-[60%] font-semibold text-center text-4xl text-neutral-300 py-2 lg:text-8xl">
-            Web Developer
-            Photographer, Creator and
-            Programmer.
-          </p>
+          <p className="text-neutral-300 text-xl">Hi, I&apos;m Ramon 👋</p>
+          <div className="lg:w-[65%] font-semibold text-center max-w-[95%] text-3xl text-neutral-300 py-2 lg:text-7xl">
+            <DecryptedText
+              text="Web Developer,"
+              animateOn="view"
+              sequential={true}
+              revealDirection="start"
+              speed={120}
+            />
+            <DecryptedText
+              text="CyberSecurity Student, and"
+              animateOn="view"
+              sequential={true}
+              revealDirection="start"
+              speed={120}
+            />
+            <DecryptedText
+              text="Programmer."
+              animateOn="view"
+              sequential={true}
+              revealDirection="start"
+              speed={120}
+            />
+          </div>
         </div>
 
         <div className="absolute bottom-1 text-neutral-300 animate-bounce flex flex-col items-center">
@@ -101,55 +132,68 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
-              <div key={index} className="bg-neutral-800/50 flex flex-col border-neutral-700 hover:border-neutral-600 transition-all duration-300 rounded-lg overflow-hidden">
 
-                <div>
-                  <div className="p-0">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      width={600}
-                      height={400}
-                      className="w-full h-48 object-cover"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <p className="text-xl mb-2">{project.title}</p>
-                    <p className="text-neutral-400 mb-4">{project.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.techStack.map((tech, i) => (
-                        <span
-                          key={i}
-                          className="px-3 py-1 text-sm bg-neutral-700 rounded-full"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+              <AnimatedContent
+                distance={150}
+                direction="horizontal"
+                reverse={false}
+                config={{ tension: 80, friction: 20 }}
+                initialOpacity={0.2}
+                animateOpacity
+                scale={1.1}
+                threshold={0.2}
+                key={index}
+              >
+                <div className="bg-neutral-800/50 h-full flex flex-col border-neutral-700 hover:border-neutral-600 transition-all duration-300 rounded-lg overflow-hidden">
+
+                  <div>
+                    <div className="p-0">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        width={600}
+                        height={400}
+                        className="w-full h-48 object-cover"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <p className="text-xl mb-2">{project.title}</p>
+                      <p className="text-neutral-400 mb-4">{project.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.techStack.map((tech, i) => (
+                          <span
+                            key={i}
+                            className="px-3 py-1 text-sm bg-neutral-700 rounded-full"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="pb-2 pr-2 flex justify-end gap-4 flex-1 items-end">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-neutral-400 hover:text-neutral-200 transition-colors"
-                  >
-                    <Github className="w-5 h-5" />
-                  </a>
-                  {project.live && (
+                  <div className="pb-2 pr-2 flex justify-end gap-4 flex-1 items-end">
                     <a
-                      href={project.live}
+                      href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-neutral-400 hover:text-neutral-200 transition-colors"
                     >
-                      <ExternalLink className="w-5 h-5" />
+                      <Github className="w-5 h-5" />
                     </a>
-                  )}
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-neutral-400 hover:text-neutral-200 transition-colors"
+                      >
+                        <ExternalLink className="w-5 h-5" />
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </div>
+              </AnimatedContent>
             ))}
           </div>
         </div>

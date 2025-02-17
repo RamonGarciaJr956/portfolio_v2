@@ -193,7 +193,7 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Navigation */}
-            <div className='lg:hidden flex flex-row justify-between items-center w-full p-4 font-GeneralSans fixed top-0 z-50'>
+            <div className='lg:hidden flex flex-row justify-between items-center w-full p-4 font-GeneralSans absolute top-0 z-50'>
                 <Link
                     href={`mailto:ramon@ramongarciajr.tech`}
                     className="backdrop-blur-sm bg-white/10 rounded-full p-2 flex justify-center items-center group z-50"
